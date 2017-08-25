@@ -1,0 +1,113 @@
+﻿@model IEnumerable<OMSIFYP.Models.MessageSend>
+
+@{
+    ViewBag.Title = "View Messages";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+
+
+}
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+
+
+<style>
+    input[type=text] {
+        width: 150px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        height: 40px;
+    }
+
+        /* When the input field gets focus, change its width to 100% */
+        input[type=text]:focus {
+            width: 50%;
+        }
+</style>
+
+
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+                <div align="center"><p><h2>All Messages</h2></p></div>
+
+            </span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+         
+
+                <table class="table" border="0">
+
+
+
+                    <tr>
+                        <th width="35">
+                            <h4>No.</h4>
+                        </th>
+                        <th width="20"></th>
+                        <th width="50"> <div align="left"><h4>Sender</h4></div></th>
+                        <th width="40"></th>
+                        <th><div align="left"> <h4>Subject</h4></div></th>
+                        <th><div align="left"> <h4>Message</h4></div></th>
+                        <th width="50"></th>
+
+                        <th> <div align="center"><h4>Options</h4></div></th>
+
+
+                    </tr>
+
+                    @{ int count = 0;}
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+
+                        <tr>
+                            <td align="center">@count</td>
+                            <th width="20"></th>
+
+                            <td width="50">
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.Sender)
+                                </div>
+
+                            </td>
+                            <th width="30"></th>
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.subject)
+                                </div>
+                            </td>
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.Message)
+                                </div>
+                            </td>
+
+                            <th width="30"></th>
+
+
+
+
+                            <td>
+                                <div align="center">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID },
+                 new { onclick = "return confirm('Are you sure you Want to delete?');" })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

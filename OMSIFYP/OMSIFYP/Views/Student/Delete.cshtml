@@ -1,0 +1,91 @@
+﻿@model OMSIFYP.Models.Student
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+                <div align="center"><p><h2>Delete Student</h2></p></div>
+
+            </span>
+        </div>
+        <div class="panel-body">
+            <table width="372" height="300" align="center">
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.FullName)</td>
+                    <td>@Html.DisplayFor(model => model.FullName)</td>
+
+                </tr>
+
+                <tr>
+                    <td>Father</td>
+                    <td>@Html.DisplayFor(model => model.father)</td>
+                </tr>
+                <tr>
+                    <td width="147">Gender</td>
+                    <td width="209">@Html.DisplayFor(model => model.gender)</td>
+                </tr>
+                <tr>
+                    <td>B-Form Number</td>
+                    <td>@Html.DisplayFor(model => model.personcnic)</td>
+                </tr>
+                <tr>
+                    <td>Guardian CNIC</td>
+                    <td>@Html.DisplayFor(model => model.fathercnic)</td>
+                </tr>
+                <tr>
+                    <td>Contact Number</td>
+                    <td>@Html.DisplayFor(model => model.noper)</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Html.DisplayFor(model => model.email)</td>
+                </tr>
+              
+                <tr>
+                    <td>Admission Date</td>
+                    <td>@Html.DisplayFor(model => model.EnrollmentDate)</td>
+                </tr>
+              
+               
+                <tr>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <table width="985">
+
+
+
+
+                            <tr>
+                                <td width="124">
+                                    @Html.ActionLink("Back to List", "Index", "Student", null, new { @class = "btn btn-warning btn-large" })
+                                </td>
+                                <td width="173">
+                                    <div class="text-right">
+                                        <input type="submit" value="Delete" class="btn btn-danger btn-large" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+
+
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

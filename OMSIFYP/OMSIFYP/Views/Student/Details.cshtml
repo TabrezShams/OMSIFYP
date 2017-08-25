@@ -1,0 +1,133 @@
+﻿@model OMSIFYP.Models.Student
+
+@{
+    ViewBag.Title = Model.FirstMidName+"'s Profile";
+}
+
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+
+                <div align="center"><p><h2>@Model.FullName</h2></p></div>
+
+            </span>
+
+        </div>
+        <div class="panel-body">
+            <div>
+                <table width="940" border="0" align="center">
+
+                    <tr>
+                        <td height="20" colspan="3" align="right"><h2>Personal Information</h2></td>
+                        <td>&nbsp;</td>
+                        <td width="1">&nbsp;</td>
+
+                        <td height="45" align="center"><h1><img src="@Model.imgUrl" alt="image" height="200" width="200" align="right"></h1></td>
+                    </tr>
+                    <tr>
+                        <td width="135" height="28"><h5>First Name:</h5></td>
+                        <td width="211"><h5>@Html.DisplayFor(model => model.FirstMidName)</h5></td>
+                        <td width="122"><h5>Last Name:</h5></td>
+                        <td width="282"><h5>@Html.DisplayFor(model => model.LastName)</h5></td>
+                    </tr>
+                    <tr>
+                        <td height="29"><h5>Father Name:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.father)</h5></td>
+                        <td><h5>Gender:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.gender)</h5></td>
+                    </tr>
+                    <tr>
+                        <td><h5>Blood Group:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.blood)</h5></td>
+                        
+                        <td><h5>Nationality:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.nationality)</h5></td>
+                    </tr>
+                    <tr>
+                        <td height="30"><h5>B-Form:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.personcnic)</h5></td>
+                        <td height="32"><h5>Guardian CNIC:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.fathercnic)</h5></td>
+                       
+                    </tr>
+                    <tr>
+                        <td height="32"><h5>Date of Birth:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.datebirth)</h5></td>
+                        
+                    </tr>
+
+                    <br />
+                    <tr>
+                        <td height="103" colspan="3" align="right"><h2>Contact Information</h2></td>
+                    </tr>
+                    <tr>
+                        <td height="30"><h5>Email Address:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.email)</h5></td>
+                        <td><h5>Phone Number:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.noper)</h5></td>
+                    </tr>
+                    <tr>
+                        <td><h5>Resident Address:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.Adddress)</h5></td>
+                        <td><h5>District:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.district)</h5></td>
+                    </tr>
+              
+
+                    <tr>
+                        <td height="103" colspan="3" align="right"><h2>Offical Information</h2></td>
+                    </tr>
+                    <tr>
+                        <td height="34"><h5>Addmission Date:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.EnrollmentDate)</h5></td>
+                        <td><h5>Student Id:</h5></td>
+                        <td><h5>@Html.DisplayFor(model => model.studId)</h5></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <table width="950">
+
+
+
+
+                        <tr>
+                            <td width="124">
+                                @Html.ActionLink("Back to List", "Index", "Student", null, new { @class = "btn btn-warning btn-large" })
+                            </td>
+                            <td width="173">
+                                <div class="text-right">
+                                    <b>
+                                        @Html.ActionLink("Edit Record", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary btn-large" })
+                                    </b>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </table>
+
+                <br />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

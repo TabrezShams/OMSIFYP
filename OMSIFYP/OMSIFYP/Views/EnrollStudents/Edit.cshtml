@@ -1,0 +1,97 @@
+﻿@model OMSIFYP.Models.EnrollStudent
+
+@{
+    ViewBag.Title = "Add Marks";
+
+    Layout = "~/Views/Shared/_LayoutInstructor.cshtml";
+}
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="row" align="center">
+            <div class="panel panel-primary">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.GenrateClassID)
+                @Html.HiddenFor(model => model.StudentID)
+                <div class="panel-heading">
+                    <span class="text-center">
+
+                        <div align="center"><p><h2>Add Marks</h2></p></div>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <table align="center" width="700" height="223" border="0">
+                        <tr>
+                            <td width="175"><h4>Student Name:</h4></td>
+                            <td width="438">
+                                <h4>
+                                    
+                                    <input type="text"  value="@Model.student.FirstMidName" readonly class="form-control" />
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Sessional 1:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="number" onKeyPress="if(this.value.length==3) return false;" min="0" name="sessional1"  value="@Model.sessional1"  class="form-control"  />
+                                    @Html.ValidationMessageFor(model => model.sessional1, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Sessional 2:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="number" onKeyPress="if(this.value.length==3) return false;" name="sessional2" min="0" value="@Model.sessional2"  class="form-control"  />
+                                    @Html.ValidationMessageFor(model => model.sessional2, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Final:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="number" onKeyPress="if(this.value.length==3) return false;" name="sessional3" min="0" maxlength="3" value="@Model.sessional3"  class="form-control"  />
+                                    @Html.ValidationMessageFor(model => model.sessional3, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="21">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="31" align="left">@Html.ActionLink("Back to list", "viewStudents", "Instructor", new { id = Model.GenrateClassID, name = Model.genrateClass.Name, section = Model.genrateClass.Section}, new { @class = "btn btn-warning btn-large" })</td>
+                            <td align="right"><button type="submit" id="btnDelete" class="btn btn-success" onclick="confirm('Are you sure you want to Add Marks ')">Save</button></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+
+    
+</body>
+</html>

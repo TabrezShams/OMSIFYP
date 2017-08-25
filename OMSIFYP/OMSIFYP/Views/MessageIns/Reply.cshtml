@@ -1,0 +1,100 @@
+﻿@model OMSIFYP.Models.MessageSend
+
+@{
+    Layout = "~/Views/Shared/_LayoutInstructor.cshtml";
+}
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reply</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+
+        <div class="row" align="center">
+            <div class="panel panel-primary">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @ViewBag.ErrorMessage
+                <div class="panel-heading">
+                    <span class="text-center">
+
+                        <div align="center"><p><h2>Reply Message</h2></p></div>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <table align="center" width="700" border="0">
+                        <tr>
+                            <td width="175"><h4>To :</h4></td>
+                            <td width="438">
+                                <h4>
+                                    <input type="text" name="email" value=" @Session["msgSender"].ToString()" class="form-control" readonly />
+
+                                </h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><h4>Sender:</h4></td>
+                            <td>
+                                <h4>
+                                    <input name="Sender" class="form-control" value=" @Session["userEmail"].ToString()" readonly />
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Subject:</h4></td>
+                            <td>
+                                <h4>
+                                    <input name="subject" class="form-control" value=" @Session["msgSub"].ToString()" readonly />
+                                    @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td><h4>Message:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="text" value="" name="Message" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="21">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="31" align="left">@Html.ActionLink("View Messages", "Index", "MessageIns", null, new { @class = "btn btn-warning btn-large" })</td>
+                            <td align="right"><button type="submit" class="btn btn-success" onclick="">Send</button></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    }
+
+
+</body>
+</html>

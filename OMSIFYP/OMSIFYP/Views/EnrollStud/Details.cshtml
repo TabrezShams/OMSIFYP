@@ -1,0 +1,66 @@
+﻿@model OMSIFYP.Models.EnrollStudent
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>EnrollStudent</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.genrateClass.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.genrateClass.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.student.father)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.student.father)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sessional1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sessional1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sessional2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sessional2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sessional3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sessional3)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

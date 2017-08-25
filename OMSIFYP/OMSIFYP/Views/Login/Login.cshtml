@@ -1,0 +1,61 @@
+﻿@model OMSIFYP.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Login/_LayoutLogin.cshtml";
+}
+
+
+
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <div class="login-form-header">
+        <div class="logo">
+            <a href="#" title="Admin Template"><img src="~/images/mylogo.png" alt="logo"></a>
+        </div>
+    </div>
+
+
+    <div align="center">
+        <h3><font color="blue">Login To Continue</font></h3>
+    </div>
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        <p style="color:red">@ViewBag.loginMessage</p>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+          <div class="col-md-10">
+               <input name="email" class="form-control" placeholder="Email" required/>
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           <div class="col-md-10">
+               <input type="password" name="password" class=" form-control showpassword" placeholder="Password" required/>
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+        <div class="login-form-footer">
+            <button type="submit" class="btn-block btn btn-primary">Sign in</button>
+        </div>
+    </div>
+}
+
+
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+

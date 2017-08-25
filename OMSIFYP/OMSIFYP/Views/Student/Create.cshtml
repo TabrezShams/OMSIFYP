@@ -1,0 +1,461 @@
+﻿@model OMSIFYP.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div align="center"><p><h2>Add New Student</h2></p></div>
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+<style>
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+</style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+
+       $("#CNIC").keyup(function (e)
+       {
+
+          if (e.keyCode != 15) {
+              if ($(this).val().length ==5) {
+                  $(this).val($(this).val() + "-");
+              }
+               else if ($(this).val().length ==13) {
+                  $(this).val($(this).val()+"-");
+
+               }
+
+          }
+       });
+       $("#fCNIC").keyup(function (e) {
+
+           if (e.keyCode != 15) {
+               if ($(this).val().length == 5) {
+                   $(this).val($(this).val() + "-");
+               }
+               else if ($(this).val().length == 13) {
+                   $(this).val($(this).val() + "-");
+
+               }
+
+           }
+       });
+       $("#pho").keyup(function (e) {
+
+           if (e.keyCode !=13) {
+               if ($(this).val().length == 4) {
+                   $(this).val($(this).val() + "-");
+               }
+
+
+           }
+       });
+   });
+
+</script>
+@using (Html.BeginForm("Create", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+        <marquee style="font-family:cursive; color:blue"> Read this form carefully and provide suitable and correct information</marquee>
+        <hr />
+
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="text-center">
+                        <span class="text-left">Fill with Appropriate info</span>
+                        <span class="col-lg-offset-3"><b>1.	Personal Info</b></span>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+
+                            <label> First Name</label>
+                            <input type="text" name="FirstMidName" required class="form-control" placeholder="First Name" />
+                            @*@Html.EditorFor(model => model.FirstMidName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })*@
+                            @Html.ValidationMessageFor(model => model.FirstMidName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-6">
+                            <label> Last Name</label>
+                            <input type="text" name="LastName" required class="form-control" placeholder="Last Name" title="Last Name Required" />
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <br>
+                        <div class="col-xs-6">
+                            <br>
+                            <label>Father Name</label>
+                            <input type="text" name="father" required class="form-control" placeholder="Father Name" />
+                            @Html.ValidationMessageFor(model => model.father, "", new { @class = "text-danger" })
+
+                        </div>
+                        <br>
+                        <div class="col-xs-6">
+                            <br>
+                            <label> <b>Nationality</b></label>
+                            <input type="text" name="nationality" required class="form-control" placeholder="Nationality" />
+                            @Html.ValidationMessageFor(model => model.nationality, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="col-xs-4">
+                            <br>
+                            <label> <b>B-Form</b></label>
+                            <input type="text" name="personcnic" required id="CNIC" placeholder="XXXXX-XXXXX-X" maxlength="15" size="15" class="form-control">
+                            @Html.ValidationMessageFor(model => model.personcnic, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="col-xs-4">
+                            <br>
+                            <label> <b>Guardian CNIC</b></label>
+                            <input type="text" name="fathercnic" required id="fCNIC" placeholder="XXXXX-XXXXX-X" maxlength="15" size="15" class="form-control">
+                            @Html.ValidationMessageFor(model => model.fathercnic, "", new { @class = "text-danger" })
+
+                        </div>
+           
+                        <div class="col-xs-4">
+                            <br>
+                            <label>Date of Birth</label>
+                            <input type="date" required name="datebirth" value="" class="form-control" />
+
+                            <br><br>
+                        </div>
+                        <div class="col-xs-6">
+                            <table width="395" border="0">
+                                <tr>
+                                    <td width="70"><strong>Gender :</strong></td>
+                                    <td width="35"><strong>Male </strong></td>
+                                    <td width="30">@Html.RadioButton("Gender", "Male") </td>
+                                    <td width="45"><strong>Female</strong></td>
+                                    <td width="42">@Html.RadioButton("Gender", "Female")</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <lable><b>Blood Group</b></lable>
+                            <select class="list-group-item-text" typeof="text" name="blood" required style="height:25px;width:100px">
+                                <option value="">-- Select --</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="text-center">
+                        <span class="text-left">Fill with Appropriate info</span>
+                        <span class="col-lg-offset-3"><b>2. Contact Info</b></span>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label>Email</label>
+                            <input type="text" name="email" required class="form-control" placeholder="something@mail.com">
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" }) <br><br>
+                        </div>
+                        <div class="col-xs-4">
+                            <label>Password</label>
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })<br><br>
+                        </div>
+                        <div class="col-xs-4">
+                            <label>Phone</label>
+                            <input type="text" name="noper" required id="pho" maxlength="12" size="12" placeholder="XXXX-XXXXXXX" class="form-control">
+                            @Html.ValidationMessageFor(model => model.noper, "", new { @class = "text-danger" })
+
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <label> <b>Address (Residential )</b></label>
+                            <input type="text" required name="Adddress" class="form-control" />
+                            @Html.ValidationMessageFor(model => model.Adddress, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-xs-3">
+
+                            <label><b>District</b></label>
+
+                            <select class="form-control" name="district" required>
+                                <option value="">-- Select --</option>
+                                <option value="Attock">Attock</option>
+                                <option value="Bahawalnagar">Bahawalnagar</option>
+                                <option value="Bahawalpur">Bahawalpur</option>
+                                <option value="Bhakkar">Bhakkar</option>
+
+                                <option value="Chakwal">Chakwal</option>
+                                <option value="Chiniot">Chiniot</option>
+                                <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
+                                <option value="Faisalabad">Faisalabad</option>
+                                <option value="Gujranwala">Gujranwala</option>
+                                <option value="Gujrat">Gujrat</option>
+                                <option value="Hafizabad">Hafizabad</option>
+                                <option value="Jhang">Jhang</option>
+                                <option value="Jhelum">Jhelum</option>
+                                <option value="Kasur">Kasur</option>
+                                <option value="Khanewal">Khanewal</option>
+                                <option value="Khushab">Khushab</option>
+                                <option value="Lahore">Lahore</option>
+                                <option value="Layyah">Layyah</option>
+                                <option value="Lodhran">Lodhran</option>
+                                <option value="	Mandi Bahauddin">Mandi Bahauddin</option>
+                                <option value="	Mianwali">Mianwali</option>
+                                <option value="Multan">Multan</option>
+                                <option value="Muzaffargarh">Muzaffargarh</option>
+                                <option value="Narowal">Narowal</option>
+                                <option value="Nankana Sahib">Nankana Sahib</option>
+                                <option value="Okara">	Okara</option>
+                                <option value="Pakpattan">Pakpattan</option>
+                                <option value="Rahim Yar Khan">Rahim Yar Khan</option>
+                                <option value="Rajanpur">Rajanpur</option>
+                                <option value="Rawalpindi">Rawalpindi</option>
+                                <option value="	Sahiwal">Sahiwal</option>
+                                <option value="Sargodha">Sargodha</option>
+                                <option value="Sheikhupura">Sheikhupura</option>
+                                <option value="Sialkot">Sialkot</option>
+                                <option value="Toba Tek Singh">Toba Tek Singh</option>
+                                <option value="	Vehari">Vehari</option>
+
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="text-center">
+                        <span class="text-left">Choose a Recect Image</span>
+                        <span class="col-lg-offset-3"><b> 3. Upload Image</b></span>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <label>  <b>Upload Image</b></label>
+
+                    <input type="file" id="image-file" required name="file" class="form-control" accept=".png,.jpg" />
+                    @Html.ValidationMessageFor(model => model.imgUrl, "", new { @class = "text-danger" })
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="text-center">
+                        <span class="text-left">Fill with Appropriate info</span>
+                        <span class="col-lg-offset-3"><b>4. Old Details</b></span>
+                    </span>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-xs-4">
+                        <label>School Name:</label>
+                        <input type="text" name="oldschoolname"  class="form-control" placeholder="Al-Atiaf" />
+                        @Html.ValidationMessageFor(model => model.oldschoolname, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-4">
+                        <label>Previous Class:</label>
+                        <input type="text" name="oldclass"  class="form-control" placeholder="8" />
+                        @Html.ValidationMessageFor(model => model.oldclass, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-xs-4">
+                        <label>City:</label>
+                        <select class="form-control" name="oldschcity" >
+                            <option value="">-- Select --</option>
+                            <option value="Attock">Attock</option>
+                            <option value="Bahawalnagar">Bahawalnagar</option>
+                            <option value="Bahawalpur">Bahawalpur</option>
+                            <option value="Bhakkar">Bhakkar</option>
+
+                            <option value="Chakwal">Chakwal</option>
+                            <option value="Chiniot">Chiniot</option>
+                            <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
+                            <option value="Faisalabad">Faisalabad</option>
+                            <option value="Gujranwala">Gujranwala</option>
+                            <option value="Gujrat">Gujrat</option>
+                            <option value="Hafizabad">Hafizabad</option>
+                            <option value="Jhang">Jhang</option>
+                            <option value="Jhelum">Jhelum</option>
+                            <option value="Kasur">Kasur</option>
+                            <option value="Khanewal">Khanewal</option>
+                            <option value="Khushab">Khushab</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="Layyah">Layyah</option>
+                            <option value="Lodhran">Lodhran</option>
+                            <option value="	Mandi Bahauddin">Mandi Bahauddin</option>
+                            <option value="	Mianwali">Mianwali</option>
+                            <option value="Multan">Multan</option>
+                            <option value="Muzaffargarh">Muzaffargarh</option>
+                            <option value="Narowal">Narowal</option>
+                            <option value="Nankana Sahib">Nankana Sahib</option>
+                            <option value="Okara">	Okara</option>
+                            <option value="Pakpattan">Pakpattan</option>
+                            <option value="Rahim Yar Khan">Rahim Yar Khan</option>
+                            <option value="Rajanpur">Rajanpur</option>
+                            <option value="Rawalpindi">Rawalpindi</option>
+                            <option value="	Sahiwal">Sahiwal</option>
+                            <option value="Sargodha">Sargodha</option>
+                            <option value="Sheikhupura">Sheikhupura</option>
+                            <option value="Sialkot">Sialkot</option>
+                            <option value="Toba Tek Singh">Toba Tek Singh</option>
+                            <option value="	Vehari">Vehari</option>
+
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-xs-6">
+                        <br />
+                        <label>  <b>School Address</b></label>
+
+                        <input type="text" name="oldschaddress" class="form-control" placeholder="Shadman Lahore" />
+                        @Html.ValidationMessageFor(model => model.oldschaddress, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col-xs-6">
+                        <br />
+                        <label>  <b>Leaving Certificate</b></label>
+
+                        <input type="file"  name="schoolcertificate" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.schoolcertificate, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="text-center">
+
+                        <span class="col-lg-offset-5"><b>5. Offical Informaion</b></span>
+                    </span>
+                </div>
+                <div class="panel-body">
+
+
+                    <div class="col-xs-6">
+                        <label>Addmission Date:</label>
+                        <input type="date" name="EnrollmentDate" value="" class="form-control" required/>
+                        @Html.ValidationMessageFor(model => model.EnrollmentDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Student ID:</label><br />
+                        <input type="text" maxlength="5" name="studId" placeholder="7B231" required class="form-control" />
+                        @*@Html.EditorFor(model => model.OfficeAssignment.Location, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OfficeAssignment.Location, "", new { @class = "text-danger" })*@
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="text-center">
+                        <span class="text-left"></span>
+                        <span class="col-lg-offset-5"><b>Disclaimer</b></span>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <h4> * All the information will be confidential and accessed by authorized/Responsible Staff </h4>
+                        <br />
+
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="text-left">
+                        <h4>
+                            I Declare That all the Information Provided is True and Genuine <input type="checkbox" id="myCheck" value="1" required name="terms">
+                        </h4>
+                    </div>
+                    <br />
+                    <table width="980">
+                        <tr>
+                            <td width="124">
+                                @Html.ActionLink("Back to List", "Index", "Student", null, new { @class = "btn btn-warning btn-large" })
+                            </td>
+                            <td width="173">
+                                <div class="text-right">
+                                    <input class="btn btn-success" name="save" id="submit" tabindex="5" value="Submit" onClick="validate()" type="submit">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

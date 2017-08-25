@@ -1,0 +1,65 @@
+﻿@model IEnumerable<OMSIFYP.Models.EnrollStudent>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.genrateClass.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.student.father)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sessional1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sessional2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sessional3)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.genrateClass.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.student.father)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sessional1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sessional2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sessional3)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

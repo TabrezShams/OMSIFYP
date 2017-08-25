@@ -1,0 +1,140 @@
+﻿@model IEnumerable<OMSIFYP.Models.GenrateClass>
+
+@{
+    ViewBag.Title = "GenrateClasses";
+}
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+
+<style>
+    input[type=text] {
+        width: 160px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        height: 40px;
+    }
+
+        /* When the input field gets focus, change its width to 100% */
+        input[type=text]:focus {
+            width: 50%;
+        }
+</style>
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+                <div align="center"><p><h2>All Classes</h2></p></div>
+
+            </span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+                <table width="1000">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="6" class="31" align="left">@Html.ActionLink("Generate New Class", "Create", "GenrateClasses", null, new { @class = "btn btn-success btn-large" })</td>
+                        <td colspan="2" align="right">
+                            @using (Html.BeginForm("Index", "GenrateClasses", FormMethod.Get))
+                            {
+                                <p>
+                                    <b>
+                                        <input type="text" name="searchName" placeholder="Search By Class Name   ">
+                                    </b>
+
+                                </p>
+                            }
+                        </td>
+                    </tr>
+
+                </table>
+
+                <table class="table" border="0">
+
+
+
+                    <tr>
+                        <th width="40">
+                            <div align="center"> <h4>No.</h4></div>
+                        </th>
+                        <th width="20"></th>
+                        <th  width="80"> <div align="left"><h4>Class</h4></div></th>
+                        <th  width="50"><div align="center"> <h4>Section</h4></div></th>
+                        <th width="20"></th>
+                        <th width="150"><div align="center"> <h4>Instructor</h4></div></th>
+                        <th width="30"></th>
+                        <th ><div align="left"> <h4>Course</h4></div></th>                     
+                        <th ><div align="center"> <h4>Department</h4></div></th>
+                        <th> <div align="center"><h4>Options</h4></div></th>
+
+
+                    </tr>
+
+                    @{ int count = 0;}
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+                        string selectedRow = "";
+                        //if (item.ID == ViewBag.InstructorID)
+                        //{
+                        //    selectedRow = "success";
+                        //}
+                        <tr class="@selectedRow">
+                            <td align="center">@count</td>
+                            <th width="20"></th>
+
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </div>
+
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.Section)                                </div>
+                            </td>
+                            <th width="20"></th>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.instructor.FirstMidName)                                </div>
+                            </td>
+                            <th width="30"></th>
+
+                            <th>
+                                @Html.DisplayFor(modelItem => item.course.Title)
+                            </th>
+
+
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.department.Name)
+                                </div>
+
+                              
+                            </td>
+
+                            <td>
+                                <div align="center">
+                                    @Html.ActionLink("Enroll", "Create", "EnrollStudents", new { id = item.GenrateClassID , name= item.Name , sec = item.Section }, "") |
+                                    @Html.ActionLink("View Enrollments", "viewStudents", new { id = item.GenrateClassID }) |
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.GenrateClassID }) 
+
+
+                                </div>
+                            </td>
+                        </tr>
+                                        }
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

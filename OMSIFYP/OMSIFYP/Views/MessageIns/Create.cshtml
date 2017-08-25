@@ -1,0 +1,136 @@
+﻿@model OMSIFYP.Models.MessageSend
+
+@{
+    Layout = "~/Views/Shared/_LayoutInstructor.cshtml";
+}
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Send Message</title>
+</head>
+<body>
+    <p style="color:green">@ViewBag.msg</p>
+    <form action="Create" method="post" id="msgpost">
+
+
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="row" align="center">
+            <div class="panel panel-primary">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @ViewBag.ErrorMessage
+                <div class="panel-heading">
+                    <span class="text-center">
+
+                        <div align="center"><p><h2>Send Message</h2></p></div>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <table align="center" width="700" border="0">
+                        <tr>
+                            <td width="175"><h4>To Whom:</h4></td>
+                            <td width="438">
+                                <h4>
+                                    <select id="role" name="role" class="form-control" onchange="roleSelect()">
+                                        @{ if (ViewBag.role == null)
+                                            {
+                                                <option>-- Select --</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@ViewBag.role">@ViewBag.role</option>
+                                            }
+
+                                        }
+
+                                        <option value="Student">Student</option>
+                                        <option value="Instructor">Instructor</option>
+                                        <option value="Admin">Admin</option>
+
+                                    </select>
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Email:</h4></td>
+                            <td>
+                                <h4>
+                                    @{
+                                        if (ViewBag.email != null)
+                                        {
+                                            @Html.DropDownList("email", null, "Email", new { @class = "form-control" })
+                                        }
+                                    }
+
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Sender:</h4></td>
+                            <td>
+                                <h4>
+                                    <input name="Sender" class="form-control" value=" @Session["userEmail"].ToString()" readonly />
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Subject:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="text" value="" name="subject" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td><h4>Message:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="text" value="" name="Message" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="21">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="31" align="left">@Html.ActionLink("View Messages", "Index", "MessageIns", null, new { @class = "btn btn-warning btn-large" })</td>
+                            <td align="right"><button type="submit" class="btn btn-success" onclick="">Send</button></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </form>
+
+
+    <script>
+        function roleSelect() {
+
+            document.getElementById("msgpost").submit();
+
+        }
+
+    </script>
+</body>
+</html>

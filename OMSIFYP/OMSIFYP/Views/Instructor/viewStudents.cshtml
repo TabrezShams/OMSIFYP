@@ -1,0 +1,115 @@
+﻿@model IEnumerable<OMSIFYP.Models.EnrollStudent>
+
+@{
+    Layout = "~/Views/Shared/_LayoutInstructor.cshtml";
+
+}
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+
+
+
+
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+                <div align="center"><p><h2>Enrollments in @Session["classname"].ToString() @Session["classSection"].ToString() </h2></p></div>
+
+            </span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+
+
+                <table class="table" border="0">
+                    <tr>
+                        <th>
+                            <div align="center"><h4>No.</h4></div>
+
+                        </th>
+                        <th>
+                            <div align="center"><h4>Student Name</h4></div>
+                            
+                        </th>
+
+
+                        <th>
+                            <div align="center"><h4>First Term</h4></div>
+                            
+                        </th>
+                        <th>
+                            <div align="center"><h4>Second Term</h4></div>
+
+                        </th>
+                        <th>
+                            <div align="center"><h4>Finals</h4></div>
+
+                        </th>
+
+                        <th>
+                            <div align="center"><h4>Options</h4></div>
+
+
+                        </th>
+                    </tr>
+                    @{ int count = 0;}
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td><div align="center">@count</div></td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.student.FirstMidName)
+                                </div>
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.sessional1)
+                                </div>
+
+
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.sessional2)
+                                </div>
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.sessional3)
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div align="center">
+                                    @Html.ActionLink("Add Marks", "Edit", "EnrollStudents", new { id = item.ID }, null) 
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

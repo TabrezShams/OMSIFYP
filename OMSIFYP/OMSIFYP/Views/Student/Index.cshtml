@@ -1,0 +1,140 @@
+﻿@model PagedList.IPagedList<OMSIFYP.Models.Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Students";
+}<br>
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+<style>
+    input[type=text] {
+        width: 150px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        height: 40px;
+    }
+
+        /* When the input field gets focus, change its width to 100% */
+        input[type=text]:focus {
+            width: 50%;
+        }
+</style>
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+                <div align="center"><p><h2>All Students</h2></p></div>
+
+            </span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+                <table width="1020" border="0">
+                    <tr>
+
+                        <td>&nbsp;</td>
+                        <td colspan="8" class="31" align="left">@Html.ActionLink("Add New Student", "Create", "Student", null, new { @class = "btn btn-success btn-large" })</td>
+                        <td colspan="2" align="right">
+                            @using (Html.BeginForm("Index", "Student", FormMethod.Get))
+                            {
+                                <p>
+                                    <b>
+                                        <input type="text" name="SearchString" placeholder=" Search By Name   ">
+                                    </b>
+
+                                </p>
+                            }
+                        </td>
+                        <td>&nbsp;</td>
+                        
+                        <td>&nbsp;</td>
+                    </tr>
+
+                </table>
+
+                <table class="table">
+
+
+
+                    <tr>
+                        <th>
+                            <h4>No.</h4>
+                        </th>
+                        <th width="20"></th>
+                        <th> <div align="left"><h4>@Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+</h4></div></th>
+                        <th><div align="left"> <h4>Last Name</h4></div></th>
+                        <th><div align="center"> <h4>@Html.ActionLink("Admission Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+</h4></div></th>
+                        <th> <div align="center"><h4>Options</h4></div></th>
+
+
+                    </tr>
+                    @{ int count = 0;}
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <th width="20"></th>
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                                </div>
+                            </td>
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </div>                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                                </div>
+                                
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                    </div>
+</td>
+                        </tr>
+                    }
+
+ 
+
+                </table>
+
+                <table width="985" height="20"  align="center">
+                    <tr>
+                        
+
+                        <td colspan="8" class="31" align="left">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</td>
+                        <td colspan="2" align="right">
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </td>
+
+
+                    </tr>
+
+                </table>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
