@@ -16,6 +16,42 @@ namespace OMSIFYP.Controllers
     {
         private SchoolContext db = new SchoolContext();
 
+        public ActionResult allclass()
+        {
+            string userID = Session["userId"].ToString();
+            int stID = Int32.Parse(userID);
+
+ 
+
+            var res = from d in db.enrollStudent select d;
+
+            res = res.Where(e => e.StudentID== stID);
+            return View(res);
+
+
+
+        }
+        public ActionResult stumarks()
+        {
+            string userID = Session["userId"].ToString();
+            int stID = Int32.Parse(userID);
+
+
+
+            var res = from d in db.enrollStudent select d;
+
+            res = res.Where(e => e.StudentID == stID);
+            return View(res);
+
+
+
+        }
+
+
+
+
+
+
         // GET: Student
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {

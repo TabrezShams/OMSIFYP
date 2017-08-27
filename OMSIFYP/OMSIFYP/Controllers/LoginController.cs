@@ -38,6 +38,7 @@ namespace OMSIFYP.Controllers
                         Student st = (Student)per;
                         Session["userName"] = st.FirstMidName;
                         Session["userImg"] = st.imgUrl;
+                        Session["userId"] = st.ID;
                         return RedirectToAction("Details", "Login", new { id = st.ID });
                     }
                     else if (per.Role == "Instructor")

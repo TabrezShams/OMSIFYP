@@ -1,15 +1,13 @@
-﻿@model IEnumerable<OMSIFYP.Models.GenrateClass>
+﻿@model IEnumerable<OMSIFYP.Models.EnrollStudent>
 
-@{
+@{  
     ViewBag.Title = "Classes";
-    Layout = "~/Views/Shared/_LayoutInstructor.cshtml";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 
 }
 <link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
 <link type="text/css" rel="stylesheet" href="~/css/style.css">
-
-
 
 
 
@@ -35,12 +33,12 @@
                         <th>
                             <h4>No.</h4>
                         </th>
-                      
+
                         <th> <div align="center"><h4>Class</h4></div></th>
-                        <th><div align="center"> <h4>Section</h4></div></th>
+                        <th> <div align="center"><h4>Section</h4></div></th>
+                        <th><div align="center"> <h4>Instructor</h4></div></th>
                         <th><div align="center"> <h4>Department</h4></div></th>
-                        <th width="220"><div align="center"> <h4>Courses</h4></div></th>
-                        <th> <div align="center"><h4>Options</h4></div></th>
+                        <th ><div align="center"> <h4>Course</h4></div></th>
 
 
                     </tr>
@@ -50,25 +48,32 @@
                     {
                         count++;
 
-                        
+
                         <tr>
                             <td>@count</td>
-                          
+
 
                             <td>
                                 <div align="center">
-                                    @Html.DisplayFor(modelItem => item.Name)
+                                    @Html.DisplayFor(modelItem => item.genrateClass.Name)
+
+
                                 </div>
 
                             </td>
                             <td>
                                 <div align="center">
-                                    @Html.DisplayFor(modelItem => item.Section)
+                                    @Html.DisplayFor(modelItem => item.genrateClass.Section)                                </div>
+                            </td>
+                       
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.genrateClass.instructor.FirstMidName)
                                 </div>
                             </td>
                             <td>
                                 <div align="center">
-                                    @Html.DisplayFor(modelItem => item.department.Name)
+                                    @Html.DisplayFor(modelItem => item.genrateClass.department.Name)
                                 </div>
                             </td>
 
@@ -76,17 +81,12 @@
 
                             <td>
                                 <div align="center">
-                                    @Html.DisplayFor(modelItem => item.course.Title)
+                                    @Html.DisplayFor(modelItem => item.genrateClass.course.Title)
                                 </div>
                             </td>
-
-                            <td>
-                                <div align="center">
-                                    @Html.ActionLink("View Students", "viewStudents", new { id = item.GenrateClassID,name  = item.Name, section =item.Section }) 
-                                </div>
-                            </td>
+                      
                         </tr>
-                                        }
+                    }
 
                 </table>
             </div>
@@ -94,11 +94,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
