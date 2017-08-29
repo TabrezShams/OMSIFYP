@@ -40,8 +40,8 @@
                 <table width="1000">
                     <tr>
                         <td>&nbsp;</td>
-                        <td colspan="6" class="31" align="left">@Html.ActionLink("Add New Department", "Create", "Department", null, new { @class = "btn btn-success btn-large" })</td>
-                        <td colspan="2" align="right">
+                        <td class="col-xs-4">@Html.ActionLink("Add New Department", "Create", "Department", null, new { @class = "btn btn-success btn-large" })</td>
+                        <td class="col-xs-8" align="right">
                             @using (Html.BeginForm("Index", "Department", FormMethod.Get))
                             {
                                 <p>

@@ -182,6 +182,10 @@ namespace OMSIFYP.Controllers
 
                         db.Students.Add(student);
                     db.SaveChanges();
+                        string stID = "lhr" + student.getId.ToString();
+                        student.studId = stID;
+                        db.Entry(student).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }

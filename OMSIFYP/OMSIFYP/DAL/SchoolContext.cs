@@ -6,6 +6,8 @@ namespace OMSIFYP.DAL
 {
     public class SchoolContext : DbContext
     {
+        public DbSet<ContactUs> contactus { get; set; }
+        public DbSet<Accountant> accountant { get; set; }
         public DbSet<SuperAdminCre> superadmin { get; set; }
         public DbSet<Fine> fine { get; set; }
         public DbSet<GenrateClass> genrateClass { get; set; }

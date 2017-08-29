@@ -218,3 +218,6 @@ C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\bin\Microsoft.AI.Windows
 C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\bin\Microsoft.ApplicationInsights.xml
 C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.acc.resources
+C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.finedes.resources
+C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.contactus.resources

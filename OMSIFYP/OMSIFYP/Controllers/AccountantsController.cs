@@ -8,119 +8,124 @@ using System.Web;
 using System.Web.Mvc;
 using OMSIFYP.DAL;
 using OMSIFYP.Models;
+using System.IO;
 
 namespace OMSIFYP.Controllers
 {
-    public class EnrollStudController : Controller
+    public class AccountantsController : Controller
     {
         private SchoolContext db = new SchoolContext();
 
-        // GET: EnrollStud
+        // GET: Accountants
         public ActionResult Index()
         {
-            var enrollStudent = db.enrollStudent.Include(e => e.genrateClass).Include(e => e.student);
-            return View(enrollStudent.ToList());
+            return View(db.accountant.ToList());
         }
 
-        // GET: EnrollStud/Details/5
+        // GET: Accountants/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnrollStudent enrollStudent = db.enrollStudent.Find(id);
-            if (enrollStudent == null)
+            Accountant accountant = db.accountant.Find(id);
+            if (accountant == null)
             {
                 return HttpNotFound();
             }
-            return View(enrollStudent);
+            return View(accountant);
         }
 
-        // GET: EnrollStud/Create
+        // GET: Accountants/Create
         public ActionResult Create()
         {
-            ViewBag.GenrateClassID = new SelectList(db.genrateClass, "GenrateClassID", "Name");
-            ViewBag.StudentID = new SelectList(db.People, "ID", "father");
             return View();
         }
 
-        // POST: EnrollStud/Create
+        // POST: Accountants/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,GenrateClassID,StudentID,sessional1,sessional2,sessional3")] EnrollStudent enrollStudent)
+        public ActionResult Create(HttpPostedFileBase file, HttpPostedFileBase CV, Accountant accountant)
         {
             if (ModelState.IsValid)
             {
-                db.enrollStudent.Add(enrollStudent);
+                accountant.Role = "Accountant";
+                string _FileName = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/UploadedFiles/Accountant_profile"), _FileName);
+
+                string _CVName = Path.GetFileName(CV.FileName);
+                string _pathCV = Path.Combine(Server.MapPath("~/UploadedFiles/Accountant_CV"), _CVName);
+
+
+
+                file.SaveAs(_path);
+                CV.SaveAs(_pathCV);
+                accountant.imgUrl = "/UploadedFiles/Accountant_profile/" + _FileName;
+                accountant.cv = "/UploadedFiles/Accountant_CV/" + _CVName;
+                db.accountant.Add(accountant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GenrateClassID = new SelectList(db.genrateClass, "GenrateClassID", "Name", enrollStudent.GenrateClassID);
-            ViewBag.StudentID = new SelectList(db.People, "ID", "father", enrollStudent.StudentID);
-            return View(enrollStudent);
+            return View(accountant);
         }
 
-        // GET: EnrollStud/Edit/5
+        // GET: Accountants/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnrollStudent enrollStudent = db.enrollStudent.Find(id);
-            if (enrollStudent == null)
+            Accountant accountant = db.accountant.Find(id);
+            if (accountant == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.GenrateClassID = new SelectList(db.genrateClass, "GenrateClassID", "Name", enrollStudent.GenrateClassID);
-            ViewBag.StudentID = new SelectList(db.People, "ID", "father", enrollStudent.StudentID);
-            return View(enrollStudent);
+            return View(accountant);
         }
 
-        // POST: EnrollStud/Edit/5
+        // POST: Accountants/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,GenrateClassID,StudentID,sessional1,sessional2,sessional3")] EnrollStudent enrollStudent)
+        public ActionResult Edit([Bind(Include = "ID,father,gender,blood,datebirth,district,nationality,userId,email,noper,personcnic,Adddress,imgUrl,password,logCont,Role,LastName,FirstMidName,HireDate,salary,cv,qualificatin")] Accountant accountant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(enrollStudent).State = EntityState.Modified;
+                db.Entry(accountant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GenrateClassID = new SelectList(db.genrateClass, "GenrateClassID", "Name", enrollStudent.GenrateClassID);
-            ViewBag.StudentID = new SelectList(db.People, "ID", "father", enrollStudent.StudentID);
-            return View(enrollStudent);
+            return View(accountant);
         }
 
-        // GET: EnrollStud/Delete/5
+        // GET: Accountants/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnrollStudent enrollStudent = db.enrollStudent.Find(id);
-            if (enrollStudent == null)
+            Accountant accountant = db.accountant.Find(id);
+            if (accountant == null)
             {
                 return HttpNotFound();
             }
-            return View(enrollStudent);
+            return View(accountant);
         }
 
-        // POST: EnrollStud/Delete/5
+        // POST: Accountants/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EnrollStudent enrollStudent = db.enrollStudent.Find(id);
-            db.enrollStudent.Remove(enrollStudent);
+            Accountant accountant = db.accountant.Find(id);
+            db.People.Remove(accountant);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

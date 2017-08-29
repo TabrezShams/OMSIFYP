@@ -43,7 +43,7 @@ namespace OMSIFYP.Models
         //[StringLength(15, ErrorMessage = "*")]
         public string email { get; set; }
 
-
+        public int getId { get { return ID; } }
 
         public string noper { get; set; }
         public string personcnic { get; set; }

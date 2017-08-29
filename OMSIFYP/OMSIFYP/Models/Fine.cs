@@ -13,6 +13,8 @@ namespace OMSIFYP.Models
         public int StudentID { get; set; }
         [Required]
         public int FineAmount { get; set; }
+        [Required]
+        public string FineDescription { get; set; }
 
         public int amountCollected { get; set; }
 

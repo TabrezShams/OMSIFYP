@@ -248,13 +248,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountantsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminContactsController.cs" />
     <Compile Include="Controllers\AdminViewController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
-    <Compile Include="Controllers\EnrollStudController.cs" />
     <Compile Include="Controllers\EnrollStudentsController.cs" />
+    <Compile Include="Controllers\FinesController.cs" />
     <Compile Include="Controllers\GenrateClassesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -264,11 +265,9 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MessageInsController.cs" />
     <Compile Include="Controllers\MessageStudentController.cs" />
-    <Compile Include="Controllers\PeopleApiController.cs" />
     <Compile Include="Controllers\PTMCallsApiController.cs" />
     <Compile Include="Controllers\PTMCallsController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\SuperAdminContactsController.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="DAL\SchoolConfiguration.cs" />
@@ -329,6 +328,18 @@
     <Compile Include="Migrations\201708251222159_timeinput.Designer.cs">
       <DependentUpon>201708251222159_timeinput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708281856463_acc.cs" />
+    <Compile Include="Migrations\201708281856463_acc.Designer.cs">
+      <DependentUpon>201708281856463_acc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291150457_finedes.cs" />
+    <Compile Include="Migrations\201708291150457_finedes.Designer.cs">
+      <DependentUpon>201708291150457_finedes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291913312_contactus.cs" />
+    <Compile Include="Migrations\201708291913312_contactus.Designer.cs">
+      <DependentUpon>201708291913312_contactus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accountant.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -336,6 +347,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AdminContact.cs" />
     <Compile Include="Models\AuthContext.cs" />
+    <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EmailAttribute.cs" />
@@ -1058,6 +1070,7 @@
     <Content Include="js\profile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\tttt.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1210,9 +1223,27 @@
     <Content Include="Views\PTMCalls\CreatebyAdmin.cshtml" />
     <Content Include="Views\Student\allclass.cshtml" />
     <Content Include="Views\Student\stumarks.cshtml" />
+    <Content Include="Views\Accountants\Create.cshtml" />
+    <Content Include="Views\Accountants\Delete.cshtml" />
+    <Content Include="Views\Accountants\Details.cshtml" />
+    <Content Include="Views\Accountants\Edit.cshtml" />
+    <Content Include="Views\Accountants\Index.cshtml" />
+    <Content Include="Views\SuperAdmin\EmployeeList.cshtml" />
+    <Content Include="Views\Fines\Create.cshtml" />
+    <Content Include="Views\Fines\Delete.cshtml" />
+    <Content Include="Views\Fines\Details.cshtml" />
+    <Content Include="Views\Fines\Edit.cshtml" />
+    <Content Include="Views\Fines\Index.cshtml" />
+    <Content Include="Views\Login\changePassword.cshtml" />
+    <Content Include="Views\Login\changePasswordIns.cshtml" />
+    <Content Include="Views\Shared\_LayoutAccountant.cshtml" />
+    <Content Include="Views\Login\DetailAccountant.cshtml" />
+    <Content Include="Views\Login\DetailsAccountant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadedFiles\Accountant_CV\" />
+    <Folder Include="UploadedFiles\Accountant_profile\" />
     <Folder Include="UploadedFiles\Admin\" />
     <Folder Include="UploadedFiles\Admin_CV\" />
     <Folder Include="UploadedFiles\certificate\" />
@@ -1263,6 +1294,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708251222159_timeinput.resx">
       <DependentUpon>201708251222159_timeinput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708281856463_acc.resx">
+      <DependentUpon>201708281856463_acc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291150457_finedes.resx">
+      <DependentUpon>201708291150457_finedes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291913312_contactus.resx">
+      <DependentUpon>201708291913312_contactus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

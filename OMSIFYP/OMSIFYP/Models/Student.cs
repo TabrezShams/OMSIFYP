@@ -29,7 +29,7 @@ namespace OMSIFYP.Models
         public string studId { get; set; }
 
 
-
+      
 
 
         //1 to many relation

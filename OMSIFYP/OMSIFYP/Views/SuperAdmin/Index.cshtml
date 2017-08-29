@@ -64,6 +64,8 @@
                             <h4>No.</h4>
                         </th>
                         <th width="20"></th>
+                        <th> <div align="left"><h4>Profile</h4></div></th>
+
                         <th> <div align="left"><h4>First Name</h4></div></th>
                         <th><div align="left"> <h4>Last Name</h4></div></th>
                         <th><div align="center"> <h4>Email</h4></div></th>
@@ -84,6 +86,12 @@
                             <td>@count</td>
                             <th width="20"></th>
 
+                            <td>
+                                <div align="left">
+
+                                    <img src="@Html.DisplayFor(modelItem => item.imgUrl)" width="130px" height="100px" alt="admin">                                </div>
+
+                            </td>
                             <td>
                                 <div align="left">
                                     @Html.DisplayFor(modelItem => item.FirstMidName)

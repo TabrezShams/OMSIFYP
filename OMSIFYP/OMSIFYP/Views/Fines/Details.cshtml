@@ -1,0 +1,50 @@
+﻿@model OMSIFYP.Models.Fine
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Fine</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.student.father)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.student.father)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FineAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FineAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.amountCollected)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.amountCollected)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.FineID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

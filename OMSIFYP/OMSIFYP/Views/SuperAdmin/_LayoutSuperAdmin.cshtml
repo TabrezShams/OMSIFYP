@@ -91,16 +91,24 @@
 
                 <li class="list-title">Admins</li>
                 <li>
-                    <a href="#"><i class="zmdi zmdi-view-dashboard"></i><span class="list-label">Admins Data</span></a>
+                    <a href="#"><i class="zmdi zmdi-account"></i><span class="list-label">Admins Data</span></a>
                     <ul>
                         <li>@Html.ActionLink("Add new Admin", "CreateAdmin", "SuperAdmin")</li>
                         <li>@Html.ActionLink("View Admins", "Index", "SuperAdmin")</li>
                     </ul>
                 </li>
+                <li class="list-title">Accountants</li>
+                <li>
+                    <a href="#"><i class="zmdi zmdi-account"></i><span class="list-label">Accountants Data</span></a>
+                    <ul>
+                        <li>@Html.ActionLink("Add new Accountant", "Create", "Accountants")</li>
+                        <li>@Html.ActionLink("View Accountant", "Index", "Accountants")</li>
+                    </ul>
+                </li>
 
                 <li class="list-title">Messages</li>
                 <li>
-                    <a href="#"><i class="zmdi zmdi-view-dashboard"></i><span class="list-label">Messages Data</span></a>
+                    <a href="#"><i class="zmdi zmdi-account-box-mail"></i><span class="list-label">Messages Data</span></a>
                     <ul>
                         <li>@Html.ActionLink("Send New Message", "Create", "MessageAdmin")</li>
                         <li>@Html.ActionLink("View Messages", "Index", "MessageAdmin")</li>

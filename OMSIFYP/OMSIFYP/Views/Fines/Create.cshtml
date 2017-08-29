@@ -1,0 +1,109 @@
+﻿@model OMSIFYP.Models.Fine
+
+@{ ViewBag.Title = "Add Fine";
+    Layout = "~/Views/Shared/_LayoutAccountant.cshtml";
+}
+
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+<script type="text/javascript">
+    function CheckDescription(val) {
+        var element = document.getElementById('des');
+ if (val == '-- Select --' || val == 'others')
+   element.style.display='block';
+ else
+   element.style.display='none';
+}
+
+    </script> 
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="row" align="center">
+            <div class="panel panel-primary">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @ViewBag.ErrorMessage
+                <div class="panel-heading">
+                    <span class="text-center">
+
+                        <div align="center"><p><h2>Add Fine</h2></p></div>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <table align="center" width="700" height="223" border="0">
+                        <tr>
+                            <td width="175"><h4>Student ID:</h4></td>
+                            <td width="438">
+                                <h4>
+                                    @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })                                 
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Amount:</h4></td>
+                            <td>
+                                <h4>
+                                    <input type="number" name="FineAmount" required class="form-control"  />
+                                    @Html.ValidationMessageFor(model => model.FineAmount, "", new { @class = "text-danger" })
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><h4>Fine Description:</h4></td>
+                            <td>
+                                <h4>
+                                    
+                                    <select class="list-group-item-text" typeof="text" name="FineDescription" onchange='CheckDescription(this.value);' required style="height:25px;width:100px">
+                                        <option value="">-- Select --</option>
+                                        <option value="Late Fee Submission">Late Fee Submission</option>
+                                        <option value="Absense Fine">Absense Fine</option>
+                                        <option value="Late Coming">Late Coming</option>
+                                        <option value="Improper Uniform">Improper Uniform</option>
+                                       
+                                        <option value="others">Others</option>
+                                    </select>
+                                    <br />
+                                    <br />
+                                    <input class="form-control" type="text" name="FineDescription" id="des" style='display:none;' />
+
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="21">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="31" align="left">@Html.ActionLink("Back to list", "Index", "Fines", null, new { @class = "btn btn-warning btn-large" })</td>
+                            <td align="right"><button type="submit" class="btn btn-success" onclick="confirm('Are you sure you want to Add Fine ')">Save</button></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+
+
+</body>
+</html>

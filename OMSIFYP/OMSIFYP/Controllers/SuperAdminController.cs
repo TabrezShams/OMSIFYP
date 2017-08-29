@@ -15,6 +15,14 @@ namespace OMSIFYP.Controllers
     {
         private SchoolContext db = new SchoolContext();
         // GET: SuperAdmin
+
+            public ActionResult EmployeeList()
+        {
+            var list = from m in db.accountant select m;
+
+            return View(list);
+        }
+
         public ActionResult Index( string searchName)
         {
             if (searchName != null)
