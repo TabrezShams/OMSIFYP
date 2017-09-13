@@ -82,12 +82,20 @@
                 </div>
                 <div class="admin-bar">
                     <ul>
-                        <li>@Html.ActionLink("Logout","Login","Login")</li>
+                        <li>@Html.ActionLink("Logout", "Login", "Web")</li>
                     </ul>
                 </div>
             </div>
             <ul class="list-accordion tree-style">
             
+                <li class="list-title">Accountants</li>
+                <li>
+                    <a href="#"><i class="zmdi zmdi-account"></i><span class="list-label">Accountants Data</span></a>
+                    <ul>
+                        <li>@Html.ActionLink("Add new Accountant", "Create", "Accountants")</li>
+                        <li>@Html.ActionLink("View Accountant", "Index", "Accountants")</li>
+                    </ul>
+                </li>
 
                 <li class="list-title">Admins</li>
                 <li>
@@ -97,14 +105,15 @@
                         <li>@Html.ActionLink("View Admins", "Index", "SuperAdmin")</li>
                     </ul>
                 </li>
-                <li class="list-title">Accountants</li>
+                <li class="list-title">Employees</li>
                 <li>
-                    <a href="#"><i class="zmdi zmdi-account"></i><span class="list-label">Accountants Data</span></a>
+                    <a href="#"><i class="zmdi zmdi-account"></i><span class="list-label">Employees Data</span></a>
                     <ul>
                         <li>@Html.ActionLink("Add new Accountant", "Create", "Accountants")</li>
-                        <li>@Html.ActionLink("View Accountant", "Index", "Accountants")</li>
+                        <li>@Html.ActionLink("Employees List", "EmployeeList", "SuperAdmin")</li>
                     </ul>
                 </li>
+       
 
                 <li class="list-title">Messages</li>
                 <li>

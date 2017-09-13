@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using OMSIFYP.ViewModels;
 using System.Data.Entity;
 using System.IO;
+using PagedList;
 
 namespace OMSIFYP.Controllers
 {
@@ -16,11 +17,59 @@ namespace OMSIFYP.Controllers
         private SchoolContext db = new SchoolContext();
         // GET: SuperAdmin
 
-            public ActionResult EmployeeList()
+            public ViewResult EmployeeList(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var list = from m in db.accountant select m;
 
-            return View(list);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Role" ? "role_desc" : "Role";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var emp = from s in db.employe
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                emp = emp.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstMidName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    emp = emp.OrderByDescending(s => s.FirstMidName);
+                    break;
+                case "Role":
+                    emp = emp.OrderBy(s => s.Role);
+                    break;
+                case "role_desc":
+                    emp = emp.OrderByDescending(s => s.Role);
+                    break;
+                default:  // Name ascending 
+                    emp = emp.OrderBy(s => s.FirstMidName);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(emp.ToPagedList(pageNumber, pageSize));
+
+
+
+
+
+
+            //var list = from m in db.employe select m;
+
+            //        return View(list);
         }
 
         public ActionResult Index( string searchName)

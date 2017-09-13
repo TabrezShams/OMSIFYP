@@ -6,7 +6,14 @@ namespace OMSIFYP.DAL
 {
     public class SchoolContext : DbContext
     {
+        //public SchoolContext()
+        //{
+        //    base.Configuration.ProxyCreationEnabled = false;
+        //}
+
+
         public DbSet<ContactUs> contactus { get; set; }
+        public DbSet<employee> employe { get; set; }
         public DbSet<Accountant> accountant { get; set; }
         public DbSet<SuperAdminCre> superadmin { get; set; }
         public DbSet<Fine> fine { get; set; }

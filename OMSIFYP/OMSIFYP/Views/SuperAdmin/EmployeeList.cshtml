@@ -1,161 +1,153 @@
-﻿@model IEnumerable<OMSIFYP.Models.employee>
-
+﻿@model PagedList.IPagedList<OMSIFYP.Models.employee>
+@using PagedList.Mvc;
 @{
-    Layout = null;
+    ViewBag.Title = "Employee's";
+    Layout = "~/Views/SuperAdmin/_LayoutSuperAdmin.cshtml";
 }
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="~/css/multilpe-select.css">
+<link type="text/css" rel="stylesheet" href="~/css/style.css">
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>EmployeeList</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.father)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.blood)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.datebirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.district)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nationality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.userId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.noper)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.personcnic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Adddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imgUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.logCont)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Role)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstMidName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HireDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.salary)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.qualificatin)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.father)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.blood)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datebirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.district)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nationality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.userId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.noper)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.personcnic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imgUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.logCont)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstMidName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HireDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.salary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.qualificatin)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
+<style>
+    input[type=text] {
+        width: 150px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        height: 40px;
     }
-    
-    </table>
-</body>
-</html>
+
+        /* When the input field gets focus, change its width to 100% */
+        input[type=text]:focus {
+            width: 50%;
+        }
+</style>
+
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="text-center">
+                <div align="center"><p><h2>List Of Employees</h2></p></div>
+
+            </span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+                <table>
+                    <tr>
+                        <td>&nbsp;</td>
+                       @* <td class="col-xs-4">&nbsp;</td>*@
+                        <td class="col-xs-12" align="right">
+                            @using (Html.BeginForm("EmployeeList", "SuperAdmin", FormMethod.Get))
+                            {
+                                <p>
+                                    <b>
+                                        <input type="text" name="SearchString" placeholder="   Search By Name   ">
+                                    </b>
+
+                                </p>
+                            }
+                        </td>
+                    </tr>
+
+                </table>
+
+                <table class="table">
+
+
+
+                    <tr>
+                        <th>
+                            <h4>No.</h4>
+                        </th>
+                        <th width="20"></th>
+                        <th> <div align="left"><h4>Profile</h4></div></th>
+
+                        <th> <div align="left"><h4>@Html.ActionLink("Name", "EmployeeList", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</h4></div></th>
+                        <th><div align="left"> <h4>@Html.ActionLink("Role", "EmployeeList", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })</h4></div></th>
+                        <th><div align="left"> <h4>Salary</h4></div></th>
+                        <th><div align="center"> <h4>Email</h4></div></th>
+
+                        <th> <div align="center"><h4>Options</h4></div></th>
+
+
+                    </tr>
+
+                    @{ int count = 0;}
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+
+                        <tr>
+                            <td>@count</td>
+                            <th width="20"></th>
+
+                            <td>
+                                <div align="left">
+
+                                    <img src="@Html.DisplayFor(modelItem => item.imgUrl)" width="130px" height="100px" alt="admin">
+                                </div>
+
+                            </td>
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.FirstMidName) @Html.DisplayFor(modelItem => item.LastName)
+                                </div>
+
+                            </td>
+
+                            <td>
+                                <div align="left">
+                                    @Html.DisplayFor(modelItem => item.Role)
+                                </div>
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.salary)
+                                </div>
+                            </td>
+                            <td>
+                                <div align="center">
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </div>
+                            </td>
+
+
+
+
+                            <td>
+                                <div align="center">
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <table >
+                    <tr>
+
+                        <td>&nbsp;</td>
+                        <td class="col-xs-4">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</td>
+                        <td class="col-xs-8" align="right">
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </td>
+
+
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

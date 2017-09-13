@@ -1,0 +1,85 @@
+﻿@model OMSIFYP.Models.ContactUs
+@{
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+<div class="w3_breadcrumb">
+    <div class="breadcrumb-inner">
+        <ul>
+            <li><a href="~/Web/Index">Home</a> <i>/</i></li>
+
+            <li>Contact</li>
+        </ul>
+    </div>
+</div>
+<!-- //breadcrumb -->
+<!--/content-inner-section-->
+<div class="w3_content_agilleinfo_inner">
+    <div class="container">
+        <div class="inner-agile-w3l-part-head">
+            <h2 class="w3l-inner-h-title">Contact</h2>
+
+        </div>
+        <div class="w3_mail_grids">
+           @using (Html.BeginForm())
+           {
+            @Html.AntiForgeryToken()
+                <div class="col-md-6 w3_agile_mail_grid">
+                    <input type="text" name="name" placeholder="Your Name" required="">
+                    <input type="email" name="email" placeholder="Your Email" required="">
+                    <input type="text" name="phone" placeholder="Your Phone Number" required="">
+
+                </div>
+                <div class="col-md-6 w3_agile_mail_grid">
+                    <textarea name="message"  placeholder="Your Message" required=""></textarea>
+                    <input type="submit" value="Send">
+                </div>
+                <div class="clearfix"> </div>
+           }
+        </div>
+    </div>
+    <div class=" map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27224.682898817162!2d74.27370726762818!3d31.466837908769484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar+Town%2C+Lahore%2C+Pakistan!5e0!3m2!1sen!2s!4v1503590159758"></iframe></iframe>
+    </div>
+</div>
+<!--//content-inner-section-->
+<div class="w3l_contact-bottom">
+    <div class="container">
+
+        <div class="w3ls_con_grids">
+
+            <div class="w3ls_footer_grid">
+                <div class="col-md-4 con-ions-left">
+                    <div class="con-ions-left-w3l">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <div class="con-grid-w3l-leftr">
+                        <h4>Location</h4>
+                        <p>Johar Town, Lahore, Pakistan</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-4 con-ions-left">
+                    <div class="con-ions-left-w3l">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="con-grid-w3l-leftr">
+                        <h4>Email</h4>
+                        <p> omsi@gmail.com</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-4 con-ions-left">
+                    <div class="con-ions-left-w3l">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <div class="con-grid-w3l-leftr">
+                        <h4>Call Us</h4>
+                        <p>+923027511122</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>

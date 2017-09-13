@@ -2,7 +2,8 @@
 
 @{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Login/_LayoutLogin.cshtml";
+    //Layout = "~/Views/Login/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
 }
 
 
@@ -13,9 +14,53 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+
+
+    <table class="table" border="1">
+        <tr><td height="38" width="75">&nbsp;</td>
+<td><marquee style="font-family:cursive; color:blue"> Enter Username & Password</marquee></td>
+<td height="38">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td ><table border="1" class="table">
+                     <tr>
+                         <td width="110">&nbsp;</td>
+                         <td width="136"><h3><p style="color:red">@ViewBag.loginMessage</p></h3> </td>
+                         <td width="142">&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td width="110">&nbsp;</td>
+                         <td width="136"><h3><input type="text" name="email" class="form-control" placeholder="Username" required /></h3> </td>
+                         <td width="142">&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td width="110">&nbsp;</td>
+                         <td width="136"><h3><input type="password" name="password" class=" form-control showpassword" placeholder="Password" required /></h3> </td>
+                         <td width="142">&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td width="110">&nbsp;</td>
+                         <td width="136"><h3><button type="submit" class="btn-block btn btn-success">Sign in</button></h3> </td>
+                         <td width="142">&nbsp;</td>
+                     </tr>
+                     
+                
+                </table></td>
+            <td height="38">&nbsp;</td>
+        </tr>
+       
+   
+
+
+    </table>
+
+
+
+
     <div class="login-form-header">
         <div class="logo">
-            <a href="#" title="Admin Template"><img src="~/images/mylogo.png" alt="logo"></a>
+            <a href="#" title="Admin Template"><img src="~/images/mylogo.png" style="border-radius: 50%" alt="logo"></a>
         </div>
     </div>
 

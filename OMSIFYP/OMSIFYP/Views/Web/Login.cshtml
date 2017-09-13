@@ -1,0 +1,64 @@
+﻿@model OMSIFYP.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+
+
+<div class="w3_breadcrumb">
+        <div class="breadcrumb-inner">
+            <ul>
+                <li><a href="~/Web/Index">Home</a> <i> /</i></li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <table class="table" border="0" background="~/images/whitey.png">
+        <tr>
+            <td height="38" width="75">&nbsp;</td>
+            <td><marquee style="font-family:cursive; color:blue"> Enter Username & Password</marquee></td>
+            <td height="38">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <table border="0" class="table" background="~/images/whitey.png">
+                    <tr>
+                        <td width="110">&nbsp;</td>
+                        <td width="136"><h3><p style="color:red">@ViewBag.loginMessage</p></h3> </td>
+                        <td width="142">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="110">&nbsp;</td>
+                        <td width="136"><h3><input type="text" name="email" class="form-control" placeholder="Username" required /></h3> </td>
+                        <td width="142">&nbsp;</td>
+                        <br />
+                    </tr>
+                    <tr>
+                        <td width="110">&nbsp;</td>
+                        <td width="136"><h3><input type="password" name="password" class=" form-control showpassword" placeholder="Password" required /></h3> </td>
+                        <td width="142">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="110">&nbsp;</td>
+                        <td width="136"><h3><button type="submit" class="btn-block btn btn-success">Sign in</button></h3> </td>
+                        <td width="142">&nbsp;</td>
+                    </tr>
+
+
+                </table>
+            </td>
+            <td height="38">&nbsp;</td>
+        </tr>
+    </table>
+
+}
+

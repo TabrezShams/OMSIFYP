@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,6 +21,7 @@ namespace OMSIFYP.Controllers
         public string Email; 
         public ActionResult Login()
         {
+        
             return View();
         }
         //Instructor Password
@@ -46,7 +49,7 @@ namespace OMSIFYP.Controllers
                     PersonToUpdate.logCont = 1;
                     db.SaveChanges();
 
-                    return RedirectToAction("Login", "Login");
+                    return RedirectToAction("Login", "Web");
                 }
                 catch (RetryLimitExceededException /* dex */)
                 {
@@ -71,10 +74,28 @@ namespace OMSIFYP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPostAdmin(Admin ad)
         {
-            ad.logCont = 1;
-            db.Entry(ad).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("login");
+            try {
+                ad.logCont = 1;
+                db.Entry(ad).State = EntityState.Modified;
+                ViewBag.loginMessage = "Password doesn't Match!";
+                db.SaveChanges();
+                return RedirectToAction("login", "Web");
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                                validationError.PropertyName,
+                                                validationError.ErrorMessage);
+                    }
+                }
+            }
+
+            return View();
+
         }
 
 
@@ -104,7 +125,7 @@ namespace OMSIFYP.Controllers
                     PersonToUpdate.logCont = 1;
                         db.SaveChanges();
 
-                        return RedirectToAction("Login","Login");
+                        return RedirectToAction("Login","Web");
                     }
                     catch (RetryLimitExceededException /* dex */)
                     {
@@ -118,12 +139,17 @@ namespace OMSIFYP.Controllers
 
         }
 
+       
 
         [HttpPost,ActionName("Login")]
-        public ActionResult LoginConfirm(Login log) {
+        public ActionResult LoginConfirm(Login log, Login model) {
             //  var pers = from m in db.People select m;
 
+
             //   Person per = db.People.Find(log.id);
+
+
+           
             Person per = db.People.FirstOrDefault(i => i.email == log.email);
             SuperAdminCre super = db.superadmin.FirstOrDefault(i => i.email == log.email);
 

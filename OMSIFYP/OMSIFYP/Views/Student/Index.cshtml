@@ -40,8 +40,8 @@
                     <tr>
 
                         <td>&nbsp;</td>
-                        <td colspan="8" class="31" align="left">@Html.ActionLink("Add New Student", "Create", "Student", null, new { @class = "btn btn-success btn-large" })</td>
-                        <td colspan="2" align="right">
+                        <td class="col-xs-4">@Html.ActionLink("Add New Student", "Create", "Student", null, new { @class = "btn btn-success btn-large" })</td>
+                        <td class="col-xs-8" align="right">
                             @using (Html.BeginForm("Index", "Student", FormMethod.Get))
                             {
                                 <p>
@@ -116,9 +116,9 @@
                 <table width="985" height="20"  align="center">
                     <tr>
                         
-
-                        <td colspan="8" class="31" align="left">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</td>
-                        <td colspan="2" align="right">
+                        <td>&nbsp;</td>
+                        <td class="col-xs-4">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</td>
+                        <td class="col-xs-8" align="right">
                             @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                         </td>

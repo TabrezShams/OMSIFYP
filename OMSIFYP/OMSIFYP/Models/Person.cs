@@ -63,6 +63,12 @@ namespace OMSIFYP.Models
         [DataType(DataType.Password)]
         public string password { get; set; }
 
+
+        [NotMapped]
+        [Required(ErrorMessage = "Confirm Password required")]
+        [CompareAttribute("password", ErrorMessage = "Password doesn't match.")]
+        public string ConfirmPassowrd { get; set; }
+
         public int logCont { get; set; }
 
         public string Role { get; set; }

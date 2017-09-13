@@ -221,3 +221,5 @@ C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\bin\System.Diagnostics.D
 C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.acc.resources
 C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.finedes.resources
 C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.contactus.resources
+C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.em.resources
+C:\Users\Rocky\Documents\GitHub\OMSIFYP\OMSIFYP\OMSIFYP\obj\Debug\OMSIFYP.Migrations.pwd.resources

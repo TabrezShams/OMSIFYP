@@ -36,11 +36,11 @@
         <div class="panel-body">
 
             <div class="row">
-                <table width="1000">
+                <table >
                     <tr>
                         <td>&nbsp;</td>
-                        <td colspan="6" class="31" align="left">@Html.ActionLink("Add New Admin", "CreateAdmin", "SuperAdmin", null, new { @class = "btn btn-success btn-large" })</td>
-                        <td colspan="2" align="right">
+                        <td class="col-xs-4">@Html.ActionLink("Add New Admin", "CreateAdmin", "SuperAdmin", null, new { @class = "btn btn-success btn-large" })</td>
+                        <td class="col-xs-8" align="right">
                             @using (Html.BeginForm("Index", "SuperAdmin", FormMethod.Get))
                             {
                                 <p>

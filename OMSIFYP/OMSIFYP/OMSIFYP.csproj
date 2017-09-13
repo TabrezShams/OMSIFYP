@@ -248,17 +248,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountantsApiController.cs" />
     <Compile Include="Controllers\AccountantsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminContactsApiController.cs" />
     <Compile Include="Controllers\AdminContactsController.cs" />
+    <Compile Include="Controllers\AdminsApiController.cs" />
     <Compile Include="Controllers\AdminViewController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CoursesApiController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DepartmentsApiController.cs" />
+    <Compile Include="Controllers\EnrollStudentsApiController.cs" />
     <Compile Include="Controllers\EnrollStudentsController.cs" />
     <Compile Include="Controllers\FinesController.cs" />
+    <Compile Include="Controllers\GenrateClassesApiController.cs" />
     <Compile Include="Controllers\GenrateClassesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
+    <Compile Include="Controllers\InstructorsApiController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessageAdminController.cs" />
@@ -268,8 +276,11 @@
     <Compile Include="Controllers\PTMCallsApiController.cs" />
     <Compile Include="Controllers\PTMCallsController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentsApiController.cs" />
     <Compile Include="Controllers\SuperAdminContactsController.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
+    <Compile Include="Controllers\SuperAdminCreApiController.cs" />
+    <Compile Include="Controllers\WebController.cs" />
     <Compile Include="DAL\SchoolConfiguration.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
     <Compile Include="DAL\SchoolInitializer.cs" />
@@ -340,6 +351,14 @@
     <Compile Include="Migrations\201708291913312_contactus.Designer.cs">
       <DependentUpon>201708291913312_contactus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708291957403_em.cs" />
+    <Compile Include="Migrations\201708291957403_em.Designer.cs">
+      <DependentUpon>201708291957403_em.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131031443_pwd.cs" />
+    <Compile Include="Migrations\201709131031443_pwd.Designer.cs">
+      <DependentUpon>201709131031443_pwd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accountant.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -364,6 +383,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MessageSend.cs" />
     <Compile Include="Models\OfficeAssignment.cs" />
+    <Compile Include="Models\ParentData.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PTMCalls.cs" />
     <Compile Include="Models\Student.cs" />
@@ -1070,6 +1090,63 @@
     <Content Include="js\profile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Webtheme\css\bootstrap.css" />
+    <Content Include="Webtheme\css\flexslider.css" />
+    <Content Include="Webtheme\css\font-awesome.css" />
+    <Content Include="Webtheme\css\jquery-ui.css" />
+    <Content Include="Webtheme\css\lightbox.css" />
+    <Content Include="Webtheme\css\style.css" />
+    <Content Include="Webtheme\css\zoomslider.css" />
+    <Content Include="Webtheme\fonts\fontawesome-webfont.svg" />
+    <Content Include="Webtheme\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Webtheme\images\1.1.jpg" />
+    <Content Include="Webtheme\images\1.JPG" />
+    <Content Include="Webtheme\images\2.jpg" />
+    <Content Include="Webtheme\images\3.jpg" />
+    <Content Include="Webtheme\images\4.JPG" />
+    <Content Include="Webtheme\images\5.jpg" />
+    <Content Include="Webtheme\images\6.jpg" />
+    <Content Include="Webtheme\images\7.jpg" />
+    <Content Include="Webtheme\images\8.jpg" />
+    <Content Include="Webtheme\images\ab.jpg" />
+    <Content Include="Webtheme\images\c-arrows.png" />
+    <Content Include="Webtheme\images\close.png" />
+    <Content Include="Webtheme\images\f1.jpg" />
+    <Content Include="Webtheme\images\f2.jpg" />
+    <Content Include="Webtheme\images\f3.jpg" />
+    <Content Include="Webtheme\images\f4.jpg" />
+    <Content Include="Webtheme\images\g1.jpg" />
+    <Content Include="Webtheme\images\g2.jpg" />
+    <Content Include="Webtheme\images\g3.jpg" />
+    <Content Include="Webtheme\images\g4.jpg" />
+    <Content Include="Webtheme\images\g5.jpg" />
+    <Content Include="Webtheme\images\g6.jpg" />
+    <Content Include="Webtheme\images\g7.jpg" />
+    <Content Include="Webtheme\images\g8.jpg" />
+    <Content Include="Webtheme\images\g9.jpg" />
+    <Content Include="Webtheme\images\move-top.png" />
+    <Content Include="Webtheme\images\move-top1.png" />
+    <Content Include="Webtheme\images\next.png" />
+    <Content Include="Webtheme\images\play-button.png" />
+    <Content Include="Webtheme\images\prev.png" />
+    <Content Include="Webtheme\images\search.png" />
+    <Content Include="Webtheme\images\t1.jpg" />
+    <Content Include="Webtheme\images\t2.jpg" />
+    <Content Include="Webtheme\images\t3.jpg" />
+    <Content Include="Webtheme\images\t4.jpg" />
+    <Content Include="Webtheme\images\tick.png" />
+    <Content Include="Webtheme\js\bootstrap.js" />
+    <Content Include="Webtheme\js\classie.js" />
+    <Content Include="Webtheme\js\easing.js" />
+    <Content Include="Webtheme\js\jquery-2.1.4.min.js" />
+    <Content Include="Webtheme\js\jquery-ui.js" />
+    <Content Include="Webtheme\js\jquery.flexslider.js" />
+    <Content Include="Webtheme\js\jquery.zoomslider.min.js" />
+    <Content Include="Webtheme\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Webtheme\js\main.js" />
+    <Content Include="Webtheme\js\modernizr-2.6.2.min.js" />
+    <Content Include="Webtheme\js\move-top.js" />
+    <Content Include="Webtheme\js\simplePlayer.js" />
     <None Include="Properties\PublishProfiles\tttt.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1228,7 +1305,6 @@
     <Content Include="Views\Accountants\Details.cshtml" />
     <Content Include="Views\Accountants\Edit.cshtml" />
     <Content Include="Views\Accountants\Index.cshtml" />
-    <Content Include="Views\SuperAdmin\EmployeeList.cshtml" />
     <Content Include="Views\Fines\Create.cshtml" />
     <Content Include="Views\Fines\Delete.cshtml" />
     <Content Include="Views\Fines\Details.cshtml" />
@@ -1239,6 +1315,24 @@
     <Content Include="Views\Shared\_LayoutAccountant.cshtml" />
     <Content Include="Views\Login\DetailAccountant.cshtml" />
     <Content Include="Views\Login\DetailsAccountant.cshtml" />
+    <Content Include="Views\SuperAdmin\EmployeeList.cshtml" />
+    <Content Include="Webtheme\fonts\fontawesome-webfont.eot" />
+    <Content Include="Webtheme\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Webtheme\fonts\fontawesome-webfont.woff" />
+    <Content Include="Webtheme\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Webtheme\fonts\FontAwesome.otf" />
+    <Content Include="Webtheme\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Webtheme\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Webtheme\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Webtheme\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Web\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutWeb.cshtml" />
+    <Content Include="Views\Web\Login.cshtml" />
+    <Content Include="Views\Web\About.cshtml" />
+    <Content Include="Views\Web\Contact.cshtml" />
+    <Content Include="Views\Web\Gallary.cshtml" />
+    <Content Include="Views\Shared\_LayoutWebFront.cshtml" />
+    <Content Include="Views\Login\changePasswordadmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1303,6 +1397,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708291913312_contactus.resx">
       <DependentUpon>201708291913312_contactus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291957403_em.resx">
+      <DependentUpon>201708291957403_em.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131031443_pwd.resx">
+      <DependentUpon>201709131031443_pwd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
